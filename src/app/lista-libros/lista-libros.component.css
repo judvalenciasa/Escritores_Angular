@@ -1,0 +1,12 @@
+.libros{
+    display:flex;
+}
+
+.libro{
+    width:100px;
+    margin:5px;
+}
+
+.libro img{
+    width:100%;
+}

@@ -10,10 +10,10 @@ import { EscritoresService } from '../servicios/escritores.service';
 })
 export class ListaEscritoresComponent implements OnInit {
 
-  arrEscritores:Escritor[];
+  arrEscritores: Escritor[];
 
 
-  constructor(private escritoresService:EscritoresService) { }
+  constructor(private escritoresService: EscritoresService) { }
 
   async ngOnInit() {
     //this.arrEscritores = this.escritoresService.getAll();
@@ -27,8 +27,12 @@ export class ListaEscritoresComponent implements OnInit {
     this.arrEscritores = await this.escritoresService.getAllPromesa();
   }
 
-  async onChange($event){
-    this.arrEscritores = await this.escritoresService.getByPais($event.target.value);
+  async onChange($event) {
+    if ($event.target.value === "todos") {
+      this.arrEscritores = await this.escritoresService.getAllPromesa();
+    } else {
+      this.arrEscritores = await this.escritoresService.getByPais($event.target.value);
+    }
   }
 
 
